@@ -2,8 +2,8 @@
 ## About
 * HTTP Proxy with Python Socket.
 * Really simple HTTP Proxy, not good, not safe just simple.
-* Run python script
 ## Execution
+* Run python script
 ```
 python3 proxy.py
 ```
