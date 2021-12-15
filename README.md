@@ -8,7 +8,7 @@
 git clone https://github.com/sarsatra/http-proxy.git
 ```
 ## Execution
-* Run python the python file
+* Run the python file
 ```
 python3 proxy.py
 ```
