@@ -1,6 +1,6 @@
 # http-proxy
 ## About
-* HTTP Proxy with Python Socket.
+* HTTP Proxy Serverwith Python Socket.
 * Really simple HTTP Proxy, not good, not safe just simple.
 ## Installation
 * Clone the repo
