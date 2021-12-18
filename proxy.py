@@ -50,7 +50,6 @@ def connstring(conn, data, addr):
             ip = b
         else:
             ip = socket.gethostbyname(b)
-        a= 1
         proxyserver(ip, int(wport), conn, data, addr)
     except Exception as e:
         print(e)
