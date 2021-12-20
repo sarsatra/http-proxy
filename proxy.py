@@ -1,15 +1,17 @@
-import socket, threading, sys
+import socket, threading, sys, argparse
 
 def main():
-    global port, buffers, maxconn
-
-    try:
-        port = int(input("Port: \n"))
-    except KeyboardInterrupt:
-        sys.exit()
+    parser = argparse.ArgumentParser(description='HTTP Proxy server.')
+    parser.add_argument('-p', '--port', type=int, help='Port number', default=8080)
+    parser.add_argument('-m', '--mconn', type=int, help='Max connection', default=10)
+    parser.add_argument('-b', '--byte', type=int, help='Bytes of recieve buffers', default=16384)
+    args = parser.parse_args()
     
-    maxconn = 5
-    buffers = 16384
+    global port, buffers, maxconn
+    
+    port =  args.port
+    maxconn = args.mconn
+    buffers = args.byte
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('', port))
