@@ -4,14 +4,14 @@ def main():
     parser = argparse.ArgumentParser(description='HTTP Proxy server.')
     parser.add_argument('-p', '--port', type=int, help='Port number', default=8080)
     parser.add_argument('-m', '--mconn', type=int, help='Max connection', default=5)
-    parser.add_argument('-b', '--byte', type=int, help='Bytes of recieve buffers', default=8192)
+    parser.add_argument('-b', '--bytes', type=int, help='Bytes of recieve buffers', default=8192)
     args = parser.parse_args()
     
     global port, buffers, maxconn
     
     port =  args.port
     maxconn = args.mconn
-    buffers = args.byte
+    buffers = args.bytes
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('', port))
