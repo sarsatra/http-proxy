@@ -12,3 +12,5 @@ git clone https://github.com/sarsatra/http-proxy.git
 ```
 python3 proxy.py -p 8080 -m 5 -b 8192
 ```
+![image](imgs/proxy2.png)
+![image](imgs/proxy.jpg)
