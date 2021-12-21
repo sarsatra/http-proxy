@@ -4,14 +4,12 @@ def main():
     parser = argparse.ArgumentParser(description='HTTP Proxy server.')
     parser.add_argument('-p', '--port', type=int, help='Port number', default=8080)
     parser.add_argument('-m', '--mconn', type=int, help='Max connection', default=5)
-    parser.add_argument('-b', '--bytes', type=int, help='Bytes of recieve buffers', default=8192)
+    parser.add_argument('-b', '--byte', type=int, help='Bytes of recieve buffers', default=8192)
     args = parser.parse_args()
-    
     global port, buffers, maxconn
-    
     port =  args.port
     maxconn = args.mconn
-    buffers = args.bytes
+    buffers = args.byte
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('', port))
@@ -34,7 +32,6 @@ def main():
             sys.exit()
 def connstring(conn, data, addr):
     try:
-        print("New Request")
         isIP = False
         fline = data.decode('utf-8').split('\n')[0]
         url = fline.split(' ')[1]
@@ -52,10 +49,10 @@ def connstring(conn, data, addr):
             ip = b
         else:
             ip = socket.gethostbyname(b)
+        print(f"New Request from {addr[0]} => {ip} ")
         proxyserver(ip, int(wport), conn, data, addr)
     except Exception as e:
         print(e)
-
 def proxyserver(webserver, port, conn, data, addr):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
