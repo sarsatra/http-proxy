@@ -24,13 +24,13 @@ def main():
         try:
             conn, addr = s.accept()
             data = conn.recv(buffers)
-            t = threading.Thread(connstring(conn, data, addr))
+            t = threading.Thread(parse(conn, data, addr))
             t.start()
         except KeyboardInterrupt:
             s.close()
             print("\nShutting down...")
             sys.exit()
-def connstring(conn, data, addr):
+def parse(conn, data, addr):
     try:
         isIP = False
         fline = data.decode('utf-8').split('\n')[0]
